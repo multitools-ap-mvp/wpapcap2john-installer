@@ -1,14 +1,20 @@
 # wpapcap2john-installer
 
-A simple bootstrap script that builds `wpapcap2john` from the [John the Ripper jumbo](https://github.com/openwall/john) source tree and installs it to `/usr/local/bin`.
+A simple bootstrap script that builds `wpapcap2john` from the [John the Ripper jumbo](https://github.com/openwall/john) 
+source tree and installs it to `/usr/local/bin`.
 
 ## Why this exists
 
-`wpapcap2john` converts WPA/WPA2 handshake captures (`.pcap`/`.cap`) directly into a crackable hash format for John the Ripper, in a single step — no need to pre-filter with `aircrack-ng` or convert through `.hccap` first. It also tends to pick up handshakes that `aircrack-ng` misses.
+`wpapcap2john` converts WPA/WPA2 handshake captures (`.pcap`/`.cap`) directly into a crackable hash format for John the Ripper, in a single step — no need to pre-filter with `aircrack-ng` or convert through `.hccap` first.
+It also tends to pick up handshakes that `aircrack-ng` misses.
 
-The problem: it's **not a released binary**. It only exists inside the John jumbo source tree, isn't packaged by most distros, and there's no standalone installer for it anywhere — you have to clone and compile the whole John the Ripper jumbo project just to get one tool out of it. This script automates that.
+The problem: it's **not a released binary**.
+It only exists inside the John jumbo source tree, isn't packaged by most distros, and there's no standalone installer
+You have to clone and compile the whole John the Ripper jumbo project just to get one tool out of it.
+This script automates that.
 
-It's also a required dependency for [Sparrow-wifi](https://github.com/ghostop14/sparrow-wifi) — Sparrow's WPA-capture workflow expects `wpapcap2john` to be on your `PATH` (in `/usr/bin` or `/usr/local/bin`), and its own docs don't tell you how to get it there.
+It's also a required dependency for [Sparrow-wifi](https://github.com/ghostop14/sparrow-wifi) —
+Sparrow's WPA-capture workflow expects `wpapcap2john` to be on your `PATH` (in `/usr/bin` or `/usr/local/bin`), and its own docs don't tell you how to get it there.
 
 ## What the script does
 
@@ -49,7 +55,10 @@ john hashes.txt --wordlist=your_wordlist.txt
   ```bash
   BUILD_DIR=/some/path sudo -E ./setup_wpapcap2john.sh
   ```
-- The script uses symlinks rather than copies, so `wpapcap2john` stays linked to its build directory (it expects some files to be nearby).
+  ———
+  
+- The script uses symlinks rather than copies
+- so `wpapcap2john` stays linked to its build directory (it expects some files to be nearby).
 - Tested against the current `bleeding-jumbo` branch as of mid-2026. Upstream changes could occasionally break the build — open an issue if `make` fails and paste the error.
 
 ## Legal
@@ -59,3 +68,4 @@ john hashes.txt --wordlist=your_wordlist.txt
 ## License
 
 MIT — see [LICENSE](LICENSE). John the Ripper itself is licensed separately (mostly GPLv2); this repo only contains the installer script.
+
