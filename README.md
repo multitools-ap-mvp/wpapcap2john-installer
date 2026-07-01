@@ -1,6 +1,6 @@
 # wpapcap2john-installer
 
-A simple bootstrap script that builds `wpapcap2john` from the [John the Ripper jumbo](https://github.com/openwall/john) 
+Python script that builds `wpapcap2john` from the [John the Ripper jumbo](https://github.com/openwall/john) 
 source tree and installs it to `/usr/local/bin`.
 
 ## Why this exists
